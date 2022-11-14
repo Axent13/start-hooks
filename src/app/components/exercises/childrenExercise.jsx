@@ -6,7 +6,11 @@ const ListComponent = ({ children }) => {
     return (
         <ol>
             {React.Children.map(children, (child) => {
-                return <li>{child}</li>;
+                const config = {
+                    ...child.props
+                };
+
+                return <li>{React.cloneElement(child, config)}</li>;
             })}
         </ol>
     );
